@@ -79,8 +79,29 @@ const  reverseString = (input)=> {
   console.log(resultss);
 
 // question 5
-
-
+const calculate =(num1, operator, num2)=> {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      if (num2 === 0) {
+        return "Error: Division by zero is not allowed!";
+      }
+      return num1 / num2;
+    default:
+      return "Error: Invalid operator. Please use +, -, *, or /";
+  }
+}
+console.log(calculate(5, '+', 3)); 
+console.log(calculate(10, '-', 4)); 
+console.log(calculate(6, '*', 7)); 
+console.log(calculate(12, '/', 3)); 
+console.log(calculate(8, '/', 0)); 
+console.log(calculate(5, '%', 3)); 
 
 // question 6
 
@@ -145,3 +166,31 @@ console.log(romanToInteger("MMXXI"));
 
 // question 8 
 
+const findSecondSmallest =(arr)=> {
+  if (arr.length < 2) {
+    throw new Error("Array should contain at least two numbers.");
+  }
+
+  let smallest = Infinity;
+  let secondSmallest = Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < smallest) {
+      secondSmallest = smallest;
+      smallest = arr[i];
+    } else if (arr[i] < secondSmallest && arr[i] !== smallest) {
+      secondSmallest = arr[i];
+    }
+  }
+
+  if (secondSmallest === Infinity) {
+    throw new Error("Second smallest element not found.");
+  }
+
+  return secondSmallest;
+}
+
+
+const numbers = [5, 2, 9, 1, 5, 6];
+const secondSmallestNumber = findSecondSmallest(numbers);
+console.log("Second Smallest Number:", secondSmallestNumber);
